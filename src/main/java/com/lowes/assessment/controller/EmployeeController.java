@@ -44,10 +44,9 @@ public class EmployeeController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Employee> getEmployee(@PathVariable("id") Long id) {
         Employee employee = empService.getById(id);
-        System.out.println("blue: " + employee);
 		if (employee == null) {
 			System.out.println("Employee with id " + id + " does not exists");
-			return new ResponseEntity<Employee>(, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
         System.out.println("Found Employee:: " + employee);
 		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
